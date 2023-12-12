@@ -1,6 +1,6 @@
-// 'use client'
+'use client'
 
-// import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Image from 'next/image';
 import { UpdateInvoice, DeleteInvoice } from '@/app/ui/invoices/buttons';
@@ -9,40 +9,38 @@ import { formatDateToLocal, formatCurrency } from '@/app/lib/utils';
 import { fetchFilteredInvoices } from '@/app/lib/data';
 
 
-// type InvoicesTable = /*unresolved*/ any
-// export default  function InvoicesTable({
-export default async function InvoicesTable({
-
+type InvoicesTable = /*unresolved*/ any
+// export default async function InvoicesTable({
+export default  function InvoicesTable({
   query,
   currentPage,
 }: {
   query: string;
   currentPage: number;
 }) {
-  const invoices = await fetchFilteredInvoices(query, currentPage);
-
+  // const invoices = await fetchFilteredInvoices(query, currentPage);
   // const invoices = fetchFilteredInvoices(query, currentPage);
-  // const [invoices, setInvoices] = useState<InvoicesTable[]>([]);
+  const [invoices, setInvoices] = useState<InvoicesTable[]>([]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const data = await fetchFilteredInvoices(query, currentPage);
-  //       setInvoices(data);
-  //     } catch (error) {
-  //       console.error('Error fetching invoices:', error);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchFilteredInvoices(query, currentPage);
+        setInvoices(data);
+      } catch (error) {
+        console.error('Error fetching invoices:', error);
+      }
+    };
 
-  //   fetchData();
-  // }, [query, currentPage]);
+    fetchData();
+  }, [query, currentPage]);
 
   return (
     <div className="mt-6 flow-root">
       <div className="inline-block min-w-full align-middle">
         <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
           <div className="md:hidden">
-            {invoices?.map((invoice) => (
+            {invoices?.map((invoice: any) => (
               <div
                 key={invoice.id}
                 className="mb-2 w-full rounded-md bg-white p-4"
@@ -102,7 +100,7 @@ export default async function InvoicesTable({
               </tr>
             </thead>
             <tbody className="bg-white">
-              {invoices?.map((invoice) => (
+              {invoices?.map((invoice: any) => (
                 <tr
                   key={invoice.id}
                   className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
