@@ -1,13 +1,14 @@
 import {
-  BanknotesIcon,
+  // BanknotesIcon,
   ClockIcon,
   UserGroupIcon,
   InboxIcon,
-} from '@heroicons/react/24/outline';
+} from '@heroicons/react/outline';
 import { lusitana } from '@/app/ui/fonts';
 
 const iconMap = {
-  collected: BanknotesIcon,
+  // collected: BanknotesIcon,
+  collected: ClockIcon,
   customers: UserGroupIcon,
   pending: ClockIcon,
   invoices: InboxIcon,
