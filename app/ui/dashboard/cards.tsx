@@ -1,3 +1,5 @@
+
+// import { useState, useEffect } from 'react';
 import {
   // BanknotesIcon,
   ClockIcon,
@@ -5,6 +7,7 @@ import {
   InboxIcon,
 } from '@heroicons/react/outline';
 import { lusitana } from '@/app/ui/fonts';
+// import { fetchCardData } from '@/app/lib/data';
 
 const iconMap = {
   // collected: BanknotesIcon,
@@ -14,7 +17,42 @@ const iconMap = {
   invoices: InboxIcon,
 };
 
-export default async function CardWrapper() {
+
+// export default async function CardWrapper() {
+  export default  async function CardWrapper() {
+    // const {
+    //   numberOfInvoices,
+    //   numberOfCustomers,
+    //   totalPaidInvoices,
+    //   totalPendingInvoices,
+    // } = await fetchCardData();
+    
+  // const [cardData, setCardData] = useState({
+  //   numberOfInvoices: 0,
+  //   numberOfCustomers: 0,
+  //   totalPaidInvoices: 0,
+  //   totalPendingInvoices: 0,
+  // });
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const data = await fetchCardData();
+  //       setCardData({
+  //         numberOfInvoices: data.numberOfInvoices,
+  //         numberOfCustomers: data.numberOfCustomers,
+  //         totalPaidInvoices: Number(data.totalPaidInvoices),
+  //         totalPendingInvoices: Number(data.totalPendingInvoices),
+  //       });
+  //     } catch (error) {
+  //       console.error('Error fetching card data:', error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []); // Run once on component mount
+
+
   return (
     <>
       {/* NOTE: comment in this code when you get to this point in the course */}
@@ -30,6 +68,8 @@ export default async function CardWrapper() {
     </>
   );
 }
+
+
 
 export function Card({
   title,
