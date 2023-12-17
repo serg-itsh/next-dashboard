@@ -1,47 +1,42 @@
 // 'use client'
-import React, { useEffect, useState } from 'react';
+
+// import React, { useEffect, useState } from 'react';
+
 import Image from 'next/image';
 import { UpdateInvoice, DeleteInvoice } from '@/app/ui/invoices/buttons';
 import InvoiceStatus from '@/app/ui/invoices/status';
 import { formatDateToLocal, formatCurrency } from '@/app/lib/utils';
 import { fetchFilteredInvoices } from '@/app/lib/data';
 
-// Define a separate function to fetch invoices
-const fetchInvoices = async (query: string, currentPage: number) => {
-  try {
-    const data = await fetchFilteredInvoices(query, currentPage);
-    return data;
-  } catch (error) {
-    console.error('Error fetching invoices:', error);
-    return [];
-  }
-};
 
-type InvoicesTable = {
-  id: string;
-  image_url: string;
-  name: string;
-  email: string;
-  amount: number;
-  date: string; // You might need to adjust the type based on your actual data
-  status: string;
-  // Add other properties as needed
-};
+// type InvoicesTable = /*unresolved*/ any
+// export default  function InvoicesTable({
+// export default async function InvoicesTable({
+export default async function InvoicesTable({
 
-const InvoicesTable = ({ query, currentPage }: {
+  query,
+  currentPage,
+}: {
   query: string;
   currentPage: number;
-}) => {
-  const [invoices, setInvoices] = useState<InvoicesTable[]>([]);
+}) {
+  const invoices = await fetchFilteredInvoices(query, currentPage);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetchInvoices(query, currentPage);
-      setInvoices(data);
-    };
+  // const invoices = fetchFilteredInvoices(query, currentPage);
+  // const [invoices, setInvoices] = useState<InvoicesTable[]>([]);
 
-    fetchData();
-  }, [query, currentPage]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const data = await fetchFilteredInvoices(query, currentPage);
+  //       setInvoices(data);
+  //     } catch (error) {
+  //       console.error('Error fetching invoices:', error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, [query, currentPage]);
 
   return (
     <div className="mt-6 flow-root">
@@ -152,5 +147,3 @@ const InvoicesTable = ({ query, currentPage }: {
     </div>
   );
 }
-
-export default InvoicesTable;
